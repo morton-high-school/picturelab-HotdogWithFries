@@ -12,19 +12,68 @@ public class IntegerPicture {
         }
     }
 
-    public int[][] mirrorVertical()
+    public void mirrorVerticalRL()
     {
-        int[][] Result = new int[7][7];
+        for (int i = 0; i < IntegerPicture.length; i++)
+        {
+            for (int j = 0; j < IntegerPicture[0].length / 2 + 1; j++)
+            {
+                IntegerPicture[i][j] = IntegerPicture[i][IntegerPicture[i].length - j - 1];
+            }
+        }
     }
 
-    public int[][] mirrorHorizontal()
+    public void mirrorHorizontalBT()
     {
-        int[][] Result = new int[7][7];
+        for (int i = 0; i < IntegerPicture.length / 2 + 1; i++)
+        {
+            for (int j = 0; j < IntegerPicture[0].length; j++)
+            {
+                IntegerPicture[i][j] = IntegerPicture[IntegerPicture.length - i - 1][j];
+            }
+        }
     }
 
-    public int[][] mirrorDiagonal()
+    public void mirrorVerticalLR()
     {
-        int[][] Result = new int[7][7];
+        for (int i = 0; i < IntegerPicture.length; i++)
+        {
+            for (int j = 0; j < IntegerPicture[0].length / 2 + 1; j++)
+            {
+                IntegerPicture[i][IntegerPicture[i].length - j - 1] = IntegerPicture[i][j];
+            }
+        }
+    }
+
+    public void mirrorHorizontalTB()
+    {
+        for (int i = 0; i < IntegerPicture.length / 2 + 1; i++)
+        {
+            for (int j = 0; j < IntegerPicture[0].length; j++)
+            {
+                IntegerPicture[IntegerPicture.length - i - 1][j] = IntegerPicture[i][j];
+            }
+        }
+    }
+
+    public void mirrorDiagonal()
+    {
+        int resultLength = 0;
+
+        if (IntegerPicture.length < IntegerPicture[0].length)
+        {
+            resultLength = IntegerPicture.length;
+        } else {
+            resultLength = IntegerPicture[0].length;
+        }
+
+        for (int i = 0; i < resultLength; i++)
+      {
+        for (int j = 0; j < resultLength; j++)
+        {
+          IntegerPicture[i][j] = IntegerPicture[j][i];
+        }
+      }  
     }
 
     public String toString() {
@@ -35,7 +84,7 @@ public class IntegerPicture {
             {
                 Result += IntegerPicture[i][j] + " ";
             }
-            Result += "\e";
+            Result += "\n";
         }
         return Result;
     }
